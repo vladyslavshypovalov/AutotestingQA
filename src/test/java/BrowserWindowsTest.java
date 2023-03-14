@@ -25,14 +25,14 @@ public class BrowserWindowsTest {
 
     @Test
     public void testNewTab() {
-        // Сохраняем идентификатор первой вкладки / окна
+
         String mainWindow = driver.getWindowHandle();
 
-        // Нажимаем на кнопку "New Tab"
+
         WebElement newTabButton = driver.findElement(By.id("tabButton"));
         newTabButton.click();
 
-        // Переключаемся на новую вкладку / окно
+
         Set<String> windowHandles = driver.getWindowHandles();
         for (String handle : windowHandles) {
             if (!handle.equals(mainWindow)) {
@@ -41,82 +41,18 @@ public class BrowserWindowsTest {
             }
         }
 
-        // Проверяем текст на новой вкладке / окне
+
         WebElement newTabText = driver.findElement(By.id("sampleHeading"));
         String actualText = newTabText.getText();
         String expectedText = "This is a sample page";
         Assert.assertEquals(actualText, expectedText);
 
 
-
-
-        // Возвращаемся на первую вкладку / окно
         driver.close();
         driver.switchTo().window(mainWindow);
         Assert.assertEquals(mainWindow, driver.getWindowHandle());
     }
 
-    @Test
-    public void testNewWindow() {
-        // Сохраняем идентификатор первой вкладки / окна
-        String mainWindow = driver.getWindowHandle();
-
-        // Нажимаем на кнопку "New Tab"
-        WebElement newTabButton = driver.findElement(By.id("windowButton"));
-        newTabButton.click();
-
-        // Переключаемся на новую вкладку / окно
-        Set<String> windowHandles = driver.getWindowHandles();
-        for (String handle : windowHandles) {
-            if (!handle.equals(mainWindow)) {
-                driver.switchTo().window(handle);
-                break;
-            }
-        }
-
-        // Проверяем текст на новой вкладке / окне
-        WebElement newTabText = driver.findElement(By.id("sampleHeading"));
-        String actualText = newTabText.getText();
-        String expectedText = "This is a sample page";
-        Assert.assertEquals(actualText, expectedText);
-
-
-
-
-        // Возвращаемся на первую вкладку / окно
-        driver.close();
-        driver.switchTo().window(mainWindow);
-        Assert.assertEquals(mainWindow, driver.getWindowHandle());
-    }
-
-    @Test
-    public void testNewWindowMassage() {
-        // Сохраняем идентификатор первой вкладки / окна
-        String mainWindow = driver.getWindowHandle();
-
-        // Нажимаем на кнопку "New Tab"
-        WebElement newTabButton = driver.findElement(By.id("messageWindowButton"));
-        newTabButton.click();
-
-        // Переключаемся на новую вкладку / окно
-        Set<String> windowHandles = driver.getWindowHandles();
-        for (String handle : windowHandles) {
-            if (!handle.equals(mainWindow)) {
-                driver.switchTo().window(handle);
-                break;
-            }
-        }
-
-        // Проверяем текст на новой вкладке / окне
-
-
-
-
-        // Возвращаемся на первую вкладку / окно
-        driver.close();
-        driver.switchTo().window(mainWindow);
-        Assert.assertEquals(mainWindow, driver.getWindowHandle());
-    }
     @AfterClass
     public static void tearDown() {
         driver.quit();

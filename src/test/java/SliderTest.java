@@ -20,7 +20,7 @@ public class SliderTest {
 
     @BeforeClass
     public static void setup() {
-        // Инициализация драйвера и настройка ожиданий
+
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
@@ -29,23 +29,21 @@ public class SliderTest {
 
     @Test
     public void testSlider() {
-        // Переход на страницу со слайдером
+
         driver.get("https://demoqa.com/Widgets");
 //        driver.get("https://demoqa.com/slider");
         WebElement fixedBanner = driver.findElement(By.id("fixedban"));
         js.executeScript("arguments[0].parentNode.removeChild(arguments[0]);", fixedBanner);
-        // Нажатие на кнопку "Slider"
+
         WebElement sliderLink = driver.findElement(By.xpath("//div[@id='content']/div[2]/div/div[1]/div[4]/div"));
         sliderLink.click();
 
-        // Нахождение элементов слайдера и инпута
         WebElement slider = driver.findElement(By.xpath("//div[@id='sliderContainer']/div/span/input"));
         WebElement sliderValue = driver.findElement(By.xpath("//div[@id='sliderContainer']/span"));
 
-        // Создание объекта Actions для перетаскивания слайдера
         Actions builder = new Actions(driver);
 
-        // Перетаскивание слайдера и проверка изменения значения в инпуте
+
         int startX = slider.getLocation().getX();
         int endX = slider.getSize().getWidth();
         builder.moveToElement(slider).click().dragAndDropBy(slider, endX, 0).perform();
@@ -55,7 +53,6 @@ public class SliderTest {
 
     @AfterClass
     public static void teardown() {
-        // Закрытие браузера
         driver.quit();
     }
 }
