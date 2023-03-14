@@ -25,17 +25,7 @@ public class DemoQAPracticeFormTest {
     private String state;
     private String city;
 
-    @Before
-    public void setup() {
-
-        System.setProperty("webdriver.chrom.driver","C:\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-
-
-        driver.manage().window().maximize();
-        driver.get("https://demoqa.com/automation-practice-form");
-        js = (JavascriptExecutor) driver;
-    }
+    System.setup();
 
 
     @Test

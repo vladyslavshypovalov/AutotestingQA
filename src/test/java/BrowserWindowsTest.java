@@ -14,14 +14,7 @@ public class BrowserWindowsTest {
 
     static WebDriver driver;
 
-    @BeforeClass
-    public static void  setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://demoqa.com/browser-windows");
-    }
+    System.setup();
 
     @Test
     public void testNewTab() {

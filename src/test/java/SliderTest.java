@@ -18,14 +18,7 @@ public class SliderTest {
 
     private static JavascriptExecutor js;
 
-    @BeforeClass
-    public static void setup() {
-
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10);
-        driver.manage().window().maximize();
-        js = (JavascriptExecutor) driver;
-    }
+    System.setup();
 
     @Test
     public void testSlider() {
